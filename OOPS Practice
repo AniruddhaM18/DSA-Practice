@@ -25,7 +25,7 @@ public class Recursion {
         }
         int fnm1 = fact(n-1);
         int fn = n* fact(n-1);
-        return fn;
+        return fn;   
     }
 
     public static int calcSum(int n){
