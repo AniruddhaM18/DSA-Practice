@@ -1,3 +1,4 @@
+//with integer 
 import java.util.*;
 public class ArraysCC {
     // Linear Search
@@ -14,6 +15,33 @@ public class ArraysCC {
         int key = 10;
 
         int index = linearSearch(numbers, key);
+        if(index == -1) {
+            System.out.println("Not Found");
+        }
+        else {
+            System.out.println("Key is at index "+index);
+        }
+    }
+}
+
+
+// with String 
+import java.util.*;
+public class ArraysCC {
+    // Linear Search
+    public static int linearSearch(String menu[], String key) {
+        for(int i=0; i<menu.length; i++) {
+            if(menu[i] == key) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        String menu[] = {"dosa", "chokha", "chole", "puri"};
+        String key = "chole";
+
+        int index = linearSearch(menu, key);
         if(index == -1) {
             System.out.println("Not Found");
         }
