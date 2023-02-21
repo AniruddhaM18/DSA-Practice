@@ -1,54 +1,51 @@
-import java.security.Key;
-import java.util.*;
-public class Recursion {
-    public static void printDecending(int n){
-        if(n == 1){
-            System.out.println(n);
+public class RecursionBasics {
+    public static void printDec(int n) {
+        if(n == 1) {
+            System.out.print(n);
             return;
         }
         System.out.print(n+" ");
-        printDecending(n-1);
+        printDec(n-1);
     }
 
-    public static void printInc(int n){
+    public static void printInc(int n) {
         if(n == 1) {
-            System.out.print(n+" ");
+            System.out.print(n+ " ");
             return;
         }
-        printInc(n - 1);
+        printInc(n-1);
         System.out.print(n+" ");
     }
 
     public static int fact(int n) {
-        if(n == 0){
+        if(n == 0) {
             return 1;
         }
         int fnm1 = fact(n-1);
-        int fn = n* fact(n-1);
+        int fn = n * fact(n-1);
         return fn;
     }
 
-    public static int calcSum(int n){
+    public static int calculatesum(int n) {
         if(n == 1) {
             return 1;
         }
-        int Snm1 = calcSum(n-1);
-        int Sn = n + Snm1;
-        return Sn;
+        int smn1 = calculatesum(n-1);
+        int sn = n + smn1;
+        return sn;
     }
 
-    //calculate nth term in fibonacci 
-    public static int fib(int n){
+    public static int fib(int n) {
         if(n == 0 || n == 1) {
             return n;
         }
         int fnm1 = fib(n-1);
         int fnm2 = fib(n-2);
-        int fn = fnm1 + fnm2;
+        int fn = fnm1+fnm2;
         return fn;
     }
 
-    public static boolean isSorted(int arr[], int i){
+    public static boolean isSorted(int arr[], int i) {
         if(i == arr.length-1) {
             return true;
         }
@@ -58,99 +55,87 @@ public class Recursion {
         return isSorted(arr, i+1);
     }
 
-    public static int firstOccurance(int arr[], int key,  int i) {
+    public static int firstOccurances(int arr[], int key, int i) {
         if(i == arr.length) {
             return -1;
         }
-        if(arr[i]== key) {
+        if(arr[i] == key) {
             return i;
         }
-        return firstOccurance(arr, key, i+1);
+        return firstOccurances(arr, key, i+1);
     }
 
-
-    public static int lastOccurance(int arr[], int key,  int i) {
+    public static int LastOccurances(int arr[], int key, int i) {
         if(i == arr.length) {
             return -1;
         }
-        int isFound = lastOccurance(arr, key, i+1);
-        if(isFound == -1 && arr[i] == key) {
-            return i;
-        }
-        return isFound;
-    }
-
-    public static int power(int x, int n) {
-        if(n == 0) {
-            return 1;
-        }
-        int xnm1 = power(x, n-1);
-        int xn = x* xnm1;
-        return xn;
-        
-    }
-
-    public static int tilingProblem(int n) {
-        //base case
-        if(n == 0 || n ==1) {
-            return 1;
-        }
-        //work
-        // vertical choice
-        int fnm1 = tilingProblem(n-1);
-        // horizontal choice
-        int fnm2 = tilingProblem(n-2);
-        //total ways
-        int totways = fnm1+fnm2;
-        return totways;
-    }
-
-    public static void removeDuplicates(String str, int idx, StringBuilder newStr, boolean map[]) {
-        if(idx == str.length()) {
-            System.out.println(newStr);
-            return;
-        }
-        //kaam/work
-        char currChar = str.charAt(idx);
-        if(map[currChar-'a'] == true) {
-            //duplicate
-            removeDuplicates(str, idx+1, newStr, map);
-        } else {
-            map[currChar-'a'] = true;
-            removeDuplicates(str, idx+1, newStr.append(currChar), map);
-        }
-    }
-
-    public static int friendsPairing(int n) {
-        if(n == 1 || n == 2) {
-            return n;
-        }
-        //choices
-        //single
-        int fnm1 = friendsPairing(n-1);
-        // pairing
-        int fnm2 = friendsPairing(n-2);
-        int pairWays = (n-1) * fnm2;
-
-        //total ways
-        int total = fnm1 + pairWays;
-        return total;
-    }
-
-    public static void printBinaryStr(int n, int lastPllace, String str){
-        //base case
-        if(n == 0) {
-            System.out.println(str);
-            return;
-        }
-        //work/kaam
-        printBinaryStr(n-1, 0, str+"0");
-        if(lastPllace == 0) {
-            printBinaryStr(n-1, 1, str+"1");
+        int isfound = LastOccurances(arr, key, i+1);
+            if(isfound == -1 && arr[i] == key) {
+                return i;
+            }   
+            return isfound;
+        }  
+        public static int power(int x, int n) {
+            if(n == 0) {
+                return 1;
+            }
+            int xnm1 = power(x, n-1);
+            int xn = x* xnm1;
+            return xn;
+            // return x * power(x, n-1);
         }
 
-    }
-    public static void main(String[] args) {
-        printBinaryStr(3, 0, "");
-    } 
-}
+        public static int tilingProblem(int n) {
+            // base case
+            if(n == 0 || n == 1) {
+                return 1;
+            }
+    
+            //kaam
+            //vertical choice
+            int fnm1 = tilingProblem(n-1);
+            // horizontal choice
+            int fnm2 = tilingProblem(n-2);
+            // total ways
+            int totways = fnm1 + fnm2;
+            return totways;
+        }
+
+        public static void removeDubs(String str, int idx, StringBuilder newstr, boolean map[]) {
+            if(idx == str.length()) {
+                System.out.println(newstr);
+                return;
+            }
+
+            //kaam
+            char currChar = str.charAt(idx);
+            if(map[currChar - 'a'] == true) {
+                removeDubs(str, idx+1, newstr, map);
+            } else {
+                map[currChar-'a'] = true;
+                removeDubs(str, idx+1, newstr.append(currChar), map);
+            }
+        }
+
+        public static int friendsPairing(int n) {
+            if(n == 1 || n == 2) {
+                return n;
+            }
+            //choice
+            //single
+            int fnm1 = friendsPairing(n-1);
+            //pair
+            int fnm2 = friendsPairing(n-2);
+            int pairways = (n-1) * fnm2;
+            //total ways
+            int totways = fnm1 + pairways;
+            return totways;
+        }
+
+        public static void printBinary(int n, int lastplace)
+        public static void main(String[] args) {
+            System.out.println(friendsPairing(3));
+        }
+    
+} 
+ 
